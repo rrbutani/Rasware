@@ -203,6 +203,7 @@ These instructions are written for use in a terminal (xterm, gterm, kterm, tty1,
 1. First install the basic dependencies
 * Archlinux : `sudo pacman -S git base-devel openocd screen arm-none-eabi-gcc arm-none-eabi-gdb arm-none-eabi-newlib`
 * Ubuntu/Debian : `sudo apt-get install git build-essential openocd screen gcc-arm-none-eabi gdb-arm-none-eabi libnewlib-arm-none-eabi`
+* If you're running some variant of Ubuntu 14.04.x, add `-o Dpkg::Options::="--force-overwrite"` to the above command.
 
 ### Download StellarisWare ###
 1. Download [StellarisWare](http://128.83.136.86/rasware/StellarisWare.tar.bz2), the TI library.
