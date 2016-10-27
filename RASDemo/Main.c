@@ -13,7 +13,7 @@ void blink(void) {
     led_on = !led_on;
 }
 
-int main(void) {  
+int main(void) {
     char ch;
 
     CallEvery(blink, 0, 0.25f);
@@ -30,7 +30,7 @@ int main(void) {
 	       "  7=GPIO Line Sensor Demo\n"
                "  8=Sonar Demo\n"
                ">> ");
-        
+
         // Read input from user
         ch = Getc();
         Printf("\n");
@@ -38,27 +38,27 @@ int main(void) {
         switch(ch) {
             case '0':
                 Printf("\nUART Demo\n");
-                uartDemo();                 
+                uartDemo();
                 break;
             case '1':
                 Printf("\nMotor Demo\n");
                 initMotors();
-                motorDemo(); 
+                motorDemo();
                 break;
             case '2':
                 Printf("\nServo Demo\n");
                 initServo();
-                servoDemo();     
+                servoDemo();
                 break;
             case '3':
                 Printf("\nLine Sensor Demo\n");
-                initI2CLineSensor();          
-                i2cLineSensorDemo();    
+                initI2CLineSensor();
+                i2cLineSensorDemo();
                 break;
-            case '4':                            
+            case '4':
                 Printf("\nIR Sensor Demo\n");
                 initIRSensor();
-                IRSensorDemo();     
+                IRSensorDemo();
                 break;
             case '5':
                 Printf("\nEncoders Demo\n");

@@ -1,4 +1,3 @@
-#include "RASDemo.h"
 
 #include <RASLib/inc/common.h>
 #include <RASLib/inc/adc.h>
@@ -33,4 +32,15 @@ void IRSensorDemo(void) {
     }
 
     Printf("\n");
+}
+// The 'main' function is the entry point of the program
+int main(void) {
+    // Initialization code can go here
+    //CallEvery(blink, 0, 0.5);
+    initIRSensor();
+    while (1) {
+        // Runtime code can go here
+        // Printf("Hello World!\n");
+        IRSensorDemo();
+    }
 }
