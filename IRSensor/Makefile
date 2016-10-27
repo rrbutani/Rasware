@@ -1,15 +1,15 @@
 # Makefile for RASWare 2013
-TARGET = output/libras.a
+TARGET = RASTemplate.out
 
 # Library Locations
 RASLIB = ../RASLib
-STELLARIS = ../../StellarisWare
-CORTEXM4 = ../../CortexM4Libs
+STELLARIS = /usr/local/lib/StellarisWare
+CORTEXM4 = /usr/local/lib/CortexM4Libs
 ARMCLIB = $(dir $(shell which $(CC)))..
 GDBSCRIPT = $(RASLIB)/gdb-script
 
 # Command Definitions
-PREFIX := ../../gcc-arm-none-eabi-*/bin/arm-none-eabi-
+PREFIX = arm-none-eabi-
 
 CC := $(PREFIX)gcc
 LD := $(PREFIX)ld
@@ -30,6 +30,7 @@ LDS = lm4f.ld
 
 OBJ := $(SRC:.c=.o)
 ASM := $(SRC:.c=.s)
+
 
 # Flag Definitions
 CFLAGS += -mthumb
@@ -84,10 +85,10 @@ debug: $(TARGET)
 	$(GDB) $< -x $(RASLIB)/gdb-script
 
 uart:
-	$(SCREEN) /dev/tty.usbmodem0E10DBE1 115200
+	$(SCREEN) /dev/lm4f 115200
 
 run: flash
-	$(SCREEN) /dev/tty.usbmodem0E10DBE1 115200
+	$(SCREEN) /dev/lm4f 115200
 
 clean:
 	-rm $(TARGET)

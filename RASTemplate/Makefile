@@ -3,13 +3,13 @@ TARGET = RASTemplate.out
 
 # Library Locations
 RASLIB = ../RASLib
-STELLARIS = /usr/local/lib/StellarisWare
-CORTEXM4 = /usr/local/lib/CortexM4Libs
+STELLARIS = ../../StellarisWare
+CORTEXM4 = ../../CortexM4Libs
 ARMCLIB = $(dir $(shell which $(CC)))..
 GDBSCRIPT = $(RASLIB)/gdb-script
 
 # Command Definitions
-PREFIX = arm-none-eabi-
+PREFIX := ../../gcc-arm-none-eabi-*/bin/arm-none-eabi-
 
 CC := $(PREFIX)gcc
 LD := $(PREFIX)ld
@@ -85,10 +85,10 @@ debug: $(TARGET)
 	$(GDB) $< -x $(RASLIB)/gdb-script
 
 uart:
-	$(SCREEN) /dev/lm4f 115200
+	$(SCREEN) /dev/tty.usbmodem0E10DBE1 115200
 
 run: flash
-	$(SCREEN) /dev/lm4f 115200
+	$(SCREEN) /dev/tty.usbmodem0E10DBE1 115200
 
 clean:
 	-rm $(TARGET)
