@@ -3,7 +3,7 @@
 #include <RASLib/inc/common.h>
 #include <RASLib/inc/adc.h>
 
-static tADC *adc[4];
+static tADC *adc[2];
 static tBoolean initialized = false;
 
 void initIRSensor(void) {
