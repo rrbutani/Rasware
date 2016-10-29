@@ -11,20 +11,20 @@ void initIRSensor(void) {
     if (initialized) {
         return;
     }
-    
+
     initialized = true;
 
     // initialize 4 pins to be used for ADC input
-    adc[0] = InitializeADC(PIN_D0);
-    adc[1] = InitializeADC(PIN_D1);
-    adc[2] = InitializeADC(PIN_D2);
-    adc[3] = InitializeADC(PIN_D3);
+    adc[0] = InitializeADC(PIN_E1);
+    adc[1] = InitializeADC(PIN_E2);
+    adc[2] = InitializeADC(PIN_E3);
+    adc[3] = InitializeADC(PIN_E4);
 }
 
 void IRSensorDemo(void) {
     Printf("Press any key to quit\n");
-        
-    // loop as long as the user doesn't press a key 
+
+    // loop as long as the user doesn't press a key
     while (!KeyWasPressed()) {
         Printf(
             "IR values:  %1.3f  %1.3f  %1.3f  %1.3f\r",
@@ -34,7 +34,6 @@ void IRSensorDemo(void) {
             ADCRead(adc[3])
             );
     }
-  
+
     Printf("\n");
 }
-
