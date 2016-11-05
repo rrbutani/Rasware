@@ -153,10 +153,16 @@ int main(void)
 
       if(line[0] >= 1.0f)
       {
-        driveBackward();
-        Wait(0.12f);
-        hardRight();
-        Wait(0.25f);
+        while(line[3] < 1.0f)
+        {
+          hardRight();
+        }
+        driveForward();
+        // hardRight();
+        // Wait(0.35f);
+        // driveForward();
+        // Wait(0.12f);
+
         // driveForward();
         // Wait(0.13f);
       }
