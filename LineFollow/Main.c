@@ -93,7 +93,12 @@ void driveForward(void){
 
   // Wait(pollRate);
 }
+void driveBackward(void){
+  SetMotor(Motors[0],-0.7f);
+  SetMotor(Motors[1],+0.7f);
 
+  // Wait(pollRate);
+}
 float min(float a, float b)
 {
   return a > b ? b : a;
@@ -148,10 +153,12 @@ int main(void)
 
       if(line[0] >= 1.0f)
       {
+        driveBackward();
+        Wait(0.12f);
         hardRight();
-        Wait(0.14f);
-        driveForward();
-        Wait(0.13f);
+        Wait(0.25f);
+        // driveForward();
+        // Wait(0.13f);
       }
 
       rate /= numBlack;
@@ -168,7 +175,7 @@ int main(void)
 
       // Printf(" --> %.2f for %d black readings..\n", rate, numBlack);
 
-      setMotors(rate, speed);
+      setMotors(rate, 1.0f);
       Wait(pollRate);
     }
     // while(1)
