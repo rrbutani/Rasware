@@ -26,3 +26,5 @@ StellarisWare/
 *._ia
 .DS_Store
 *.swp
+# Makefiles: these vary by system/OS
+Makefile
