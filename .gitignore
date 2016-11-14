@@ -28,3 +28,5 @@ StellarisWare/
 *.swp
 
 openocd.log
+# Makefiles: these vary by system/OS
+Makefile
