@@ -6,6 +6,5 @@ Warn : acknowledgment received, but no packet pending
 undefined debug reason 6 - target needs reset
 target state: halted
 target halted due to debug-request, current mode: Thread 
-xPSR: 0x01000000 pc: 0x000017c4 msp: 0x20008000
-Info : Padding image section 0 with 4 bytes
+xPSR: 0x01000000 pc: 0x0000100c msp: 0x20008000
 Info : dropped 'gdb' connection

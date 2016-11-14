@@ -23,6 +23,24 @@
 
 #include "adc.h"
 
+#include <stdint.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include "SPI_uDMA_drv.h"
+#include "WS2812_drv.h"
+
+#include <StellarisWare/driverlib/gpio.h>
+#include <StellarisWare/driverlib/pin_map.h>
+#include <StellarisWare/driverlib/rom.h>
+#include <StellarisWare/driverlib/ssi.h>
+#include <StellarisWare/driverlib/sysctl.h>
+#include <StellarisWare/driverlib/udma.h>
+#include <StellarisWare/inc/hw_ints.h>
+#include <StellarisWare/inc/hw_memmap.h>
+#include <StellarisWare/inc/hw_ssi.h>
+
+
+
 #include <StellarisWare/inc/hw_ints.h>
 #include <StellarisWare/inc/hw_memmap.h>
 #include <StellarisWare/driverlib/sysctl.h>

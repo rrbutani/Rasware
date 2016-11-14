@@ -1,5 +1,5 @@
 # Makefile for RASWare 2013
-TARGET = output/libras.a
+TARGET = RASDemo.out
 
 # Library Locations
 RASLIB = ../RASLib
@@ -30,6 +30,7 @@ LDS = lm4f.ld
 
 OBJ := $(SRC:.c=.o)
 ASM := $(SRC:.c=.s)
+
 
 # Flag Definitions
 CFLAGS += -mthumb

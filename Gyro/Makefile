@@ -1,9 +1,10 @@
 # Makefile for RASWare 2013
-TARGET = output/libras.a
+TARGET = RASDemo.out
 
 # Library Locations
 RASLIB = ../RASLib
 STELLARIS = /usr/local/lib/StellarisWare
+ENERGIA = /home/rahulbutani/Documents/Development/RAS/energia/energia-1.6.10E18/hardware/energia/msp430/cores/msp430
 CORTEXM4 = /usr/local/lib/CortexM4Libs
 ARMCLIB = $(dir $(shell which $(CC)))..
 GDBSCRIPT = $(RASLIB)/gdb-script
@@ -24,12 +25,13 @@ SCREEN := screen
 
 # File Definitions
 SRC := $(wildcard src/*.c *.c)
-INC = inc $(RASLIB)/.. $(STELLARIS)/.. $(STELLARIS)
+INC = inc $(RASLIB)/.. $(STELLARIS)/.. $(STELLARIS) $(ENERGIA)
 LIB = ras driver-cm4f m c gcc
 LDS = lm4f.ld
 
 OBJ := $(SRC:.c=.o)
 ASM := $(SRC:.c=.s)
+
 
 # Flag Definitions
 CFLAGS += -mthumb
