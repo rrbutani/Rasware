@@ -1,15 +1,16 @@
-# Makefile for RASWare 2013
-TARGET = RASDemo.out
+# Makefile for Figure8 8
+TARGET = Figure8.out
 
 # Library Locations
 RASLIB = ../RASLib
-STELLARIS = ../../StellarisWare
-CORTEXM4 = ../../CortexM4Libs
+STELLARIS = /usr/local/lib/StellarisWare
+TD = ../TechnicalDifficulties
+CORTEXM4 = /usr/local/lib/CortexM4Libs
 ARMCLIB = $(dir $(shell which $(CC)))..
 GDBSCRIPT = $(RASLIB)/gdb-script
 
 # Command Definitions
-PREFIX := ../../gcc-arm-none-eabi-*/bin/arm-none-eabi-
+PREFIX = arm-none-eabi-
 
 CC := $(PREFIX)gcc
 LD := $(PREFIX)ld
@@ -18,14 +19,14 @@ OBJCOPY := $(PREFIX)objcopy
 SIZE := $(PREFIX)size
 GDB := $(PREFIX)gdb
 
-OPENOCDCFG := $(shell find /usr/local/Cellar/open-ocd/ -iname *tm4c123*)
+OPENOCDCFG := $(shell find /usr/share/openocd -iname *tm4c123*)
 OPENOCD = openocd -f $(OPENOCDCFG)
 SCREEN := screen
 
 # File Definitions
 SRC := $(wildcard src/*.c *.c)
-INC = inc $(RASLIB)/.. $(STELLARIS)/.. $(STELLARIS)
-LIB = ras driver-cm4f m c gcc
+INC = inc $(RASLIB)/.. $(STELLARIS)/.. $(STELLARIS) $(TD)/..
+LIB = ras td driver-cm4f m c gcc
 LDS = lm4f.ld
 
 OBJ := $(SRC:.c=.o)
@@ -42,6 +43,7 @@ else
 lib-search-dirs = $(shell ${CC} ${CFLAGS} -print-search-dirs | grep libraries | sed -e "s/libraries:\ =/-L'/" -e "s/ /\\\ /" -e "s/:/' -L'/g" -e "s/$$/'/")
 endif
 LDDIR += $(RASLIB)/output
+LDDIR += $(TD)/output
 LDDIR += $(STELLARIS)/driverlib/gcc-cm4f
 LDDIR += $(CORTEXM4)
 
@@ -85,10 +87,10 @@ debug: $(TARGET)
 	$(GDB) $< -x $(RASLIB)/gdb-script
 
 uart:
-	$(SCREEN) /dev/tty.usbmodem0E10DBE1 115200
+	$(SCREEN) /dev/lm4f 115200
 
 run: flash
-	$(SCREEN) /dev/tty.usbmodem0E10DBE1 115200
+	$(SCREEN) /dev/lm4f 115200
 
 clean:
 	-rm $(TARGET)
