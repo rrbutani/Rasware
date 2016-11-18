@@ -7,6 +7,7 @@
 #include <RASLib/inc/i2c.h>
 
 #include <TechnicalDifficulties/inc/params.h>
+#include <TechnicalDifficulties/inc/shared.h>
 
 #define MPU6050_PWR_MGMT_1 0x6B
 #define MPU6050_ACCEL_XOUT_H 0x3B
@@ -22,7 +23,7 @@ tI2C *i2c;
 static char rawData[14]; //7 values (3 Accel, 3 Gyro, 1 Temp), 2b's per
 static char *rawDataPtr = rawData;
 
-tBoolean InitializeSensor()
+tBoolean InitializeSensor(void)
 {
   char send[2] =  { MPU6050_PWR_MGMT_1, //Address of power management register
                     0                   //Disable sleep
@@ -31,7 +32,7 @@ tBoolean InitializeSensor()
   return I2CSend(
     i2c,              //Pointer to initialized I2C module
     MPU6050_I2C_ADDR, //I2C Address of sensor
-    &send,
+    send,
     2          );
 }
 
@@ -73,6 +74,8 @@ void PrintData(const unsigned char *raw)
 int main(void)
 {
   Printf("Starting...\n");
+
+  // throw_error();
 
   i2c = InitializeI2C(MPU_SDA, MPU_SCL);
 
