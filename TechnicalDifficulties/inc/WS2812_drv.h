@@ -239,4 +239,4 @@ WSSetLEDBlue(uint8_t *pi8SPILEDs, uint16_t ui16LED, uint8_t ui8Color)
 }
 #endif
 
-#endif // __WS2812_DRV_H__
+#endif // __R_WS2812_DRV_H__

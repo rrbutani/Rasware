@@ -50,4 +50,4 @@ extern void InitSPITransfer(uint8_t *pui8SPIData, uint16_t ui16DataSize,
 }
 #endif
 
-#endif // __SPI_UDMA_DRV_H__
+#endif // __R_SPI_UDMA_DRV_H__

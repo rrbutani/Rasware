@@ -1,10 +1,10 @@
-# Makefile for RASWare 2013
-TARGET = RASDemo.out
+# Makefile for MPU6050 Testing
+TARGET = Gyro.out
 
 # Library Locations
 RASLIB = ../RASLib
 STELLARIS = /usr/local/lib/StellarisWare
-ENERGIA = /home/rahulbutani/Documents/Development/RAS/energia/energia-1.6.10E18/hardware/energia/msp430/cores/msp430
+TD = ../TechnicalDifficulties
 CORTEXM4 = /usr/local/lib/CortexM4Libs
 ARMCLIB = $(dir $(shell which $(CC)))..
 GDBSCRIPT = $(RASLIB)/gdb-script
@@ -25,8 +25,8 @@ SCREEN := screen
 
 # File Definitions
 SRC := $(wildcard src/*.c *.c)
-INC = inc $(RASLIB)/.. $(STELLARIS)/.. $(STELLARIS) $(ENERGIA)
-LIB = ras driver-cm4f m c gcc
+INC = inc $(RASLIB)/.. $(STELLARIS)/.. $(STELLARIS) $(TD)/..
+LIB = ras td driver-cm4f m c gcc
 LDS = lm4f.ld
 
 OBJ := $(SRC:.c=.o)
@@ -43,6 +43,7 @@ else
 lib-search-dirs = $(shell ${CC} ${CFLAGS} -print-search-dirs | grep libraries | sed -e "s/libraries:\ =/-L'/" -e "s/ /\\\ /" -e "s/:/' -L'/g" -e "s/$$/'/")
 endif
 LDDIR += $(RASLIB)/output
+LDDIR += $(TD)/output
 LDDIR += $(STELLARIS)/driverlib/gcc-cm4f
 LDDIR += $(CORTEXM4)
 
