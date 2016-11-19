@@ -10,7 +10,7 @@
  */
 
 //IR Sensors - Analog ADC Read Pins
-static const tPin IR_Front_Right = PIN_D0; 
+static const tPin IR_Front_Right = PIN_D0;
 static const tPin IR_Front_Left  = PIN_D1;
 static const tPin IR_Back_Right  = PIN_D2;
 static const tPin IR_Back_Left   = PIN_D3;
@@ -20,8 +20,8 @@ static const tPin MPU_SDA = PIN_B3;
 static const tPin MPU_SCL = PIN_B2;
 
 //Drive Servos:
-static const tPin DRIVE_RIGHT = PIN_B6;
-static const tPin DRIVE_LEFT  = PIN_B7;
+static const tPin DRIVE_RIGHT = PIN_B7;
+static const tPin DRIVE_LEFT  = PIN_B6;
 
 //Intake Servo:
 static const tPin INTAKE = PIN_C4;
@@ -29,7 +29,7 @@ static const tPin INTAKE = PIN_C4;
 //Lights:
 /*NOTE: This variable isn't actually used; you can't use this to change the
  *data pin for the strip. Due to the SPI DMA, the data pin for the strip must
- *be F1 (for now). This is here mainly for reference - and so F1 isn't 
+ *be F1 (for now). This is here mainly for reference - and so F1 isn't
  *mistakenly used for something else.
  */
 static const tPin LEDStrip_Data = PIN_F1;
