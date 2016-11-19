@@ -38,6 +38,7 @@ void initIRSensors(void)
 
 float getThreshold(void)
 {
+  Printf("getting threshold");
   SetMotor(Motors[0], 0.15f);
   SetMotor(Motors[1], -0.15f);
 
@@ -52,7 +53,7 @@ float getThreshold(void)
     if(currentDist < lowest)
       lowest = currentDist;
 
-    Printf("Current: %f | Lowest: %f\n", currentDist, lowest);
+//    Printf("Current: %f | Lowest: %f\n", currentDist, lowest);
   }
 
   return lowest;
@@ -71,14 +72,14 @@ void alignToObject(float threshold)
   //Spin!!
   SetMotor(Motors[0], 0.10f);
   SetMotor(Motors[1], -0.10f);
-
+  // Printf("Hello everybody!");
   float currentDist = 1.0f;
 
   while(currentDist > threshold)
   { // Stop when we reach the object?\
 
     currentDist = ADCRead(adc[0]);
-    Printf("Current: %f, | Threshold: %d\n", currentDist, threshold);
+  //  Printf("Current: %f, | Threshold: %d\n", currentDist, threshold);
   }
 
   SetMotor(Motors[0], 0.0f);
@@ -97,12 +98,12 @@ void alignToObject(float threshold)
   SetMotor(Motors[1], 0.0f);
 
 
-  
+
 }
 bool closeEnough()
 {
   Printf("\nDistance is %f",ADCRead(adc[0]));
-  if (ADCRead(adc[0])>.75f)
+  if (ADCRead(adc[0])>.85f)
   {
     return true;
     Printf("\ncloseEnough");
@@ -114,22 +115,25 @@ bool closeEnough()
 void driveToObject()
 {
   Printf("\nDriving to object!");
-  SetMotor(Motors[0],.15f);
+  SetMotor(Motors[0],.17f);
   SetMotor(Motors[1],.15f);
   while(!closeEnough());
-  SetMotor(Motors[0],0);
-  SetMotor(Motors[1],0);
-  
+  SetMotor(Motors[0],-0.15f);
+  SetMotor(Motors[1],0.15f);
+  Wait(.5f);
+  SetMotor(Motors[0],0.0f);
+  SetMotor(Motors[1],0.0f);
+
 }
 
 int main(void)
 {
-  Printf("hi");
+//  Printf("hi");
     initMotors();
     // initLights();
     initIRSensors();
     Printf("starting..\n");
-    float threshold; 
+    float threshold;
 
     threshold = getThreshold() + 0.03f;
 
@@ -140,5 +144,3 @@ int main(void)
     // SetMotor(Motors[2], 1.00f);
 
 }
-
-
