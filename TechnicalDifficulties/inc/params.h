@@ -10,10 +10,10 @@
  */
 
 //IR Sensors - Analog ADC Read Pins
-static const tPin IR_Front_Right = PIN_D0; 
-static const tPin IR_Front_Left  = PIN_D1;
-static const tPin IR_Back_Right  = PIN_D2;
-static const tPin IR_Back_Left   = PIN_D3;
+static const tPin IR_FRONT_RIGHT = PIN_E1; 
+static const tPin IR_FRONT_LEFT  = PIN_D1;
+static const tPin IR_BACK_RIGHT  = PIN_D2;
+static const tPin IR_BACK_LEFT   = PIN_D3;
 
 //MPU-6050:
 static const tPin MPU_SDA = PIN_B3;
@@ -26,13 +26,18 @@ static const tPin DRIVE_LEFT  = PIN_B7;
 //Intake Servo:
 static const tPin INTAKE = PIN_C4;
 
-//Lights:
+//Light Strip:
 /*NOTE: This variable isn't actually used; you can't use this to change the
  *data pin for the strip. Due to the SPI DMA, the data pin for the strip must
  *be F1 (for now). This is here mainly for reference - and so F1 isn't 
  *mistakenly used for something else.
  */
 static const tPin LEDStrip_Data = PIN_F1;
+
+//RGB LEDs:
+static const tPin ONBOARD_R = PIN_D0; //PIN_F1; //Avoiding conflict w/Light
+static const tPin ONBOARD_G = PIN_F3;			//strip, using filler pin D0
+static const tPin ONBOARD_B = PIN_F2;			//(known to be broken)
 
 //Arm Servos:
 static const tPin ARM_RIGHT = PIN_C5;
@@ -52,6 +57,7 @@ static const tPin LINE_8 = PIN_E0;
 static const tPin LEFT_RIGHT_TOGGLE = PIN_A2;
 static const tPin START_STOP_BUTTON = PIN_F0;
 static const tPin MODE_CYCLE_BUTTON = PIN_F4;
+// static const tPin REVERSE_INTAKE_BUTTON = PIN_ //TODO
 
 //*****************************************************************************
 
