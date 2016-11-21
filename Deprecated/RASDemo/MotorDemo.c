@@ -12,8 +12,8 @@ void initMotors(void) {
 
       Motors[0] = InitializeServoMotor(PIN_B6, false);
       Motors[1] = InitializeServoMotor(PIN_B7, false);
-      // Motors[2] = InitializeServoMotor(PIN_C4, false);
-      // Motors[3] = InitializeServoMotor(PIN_C5, false);
+      Motors[2] = InitializeServoMotor(PIN_C4, false);
+      Motors[3] = InitializeServoMotor(PIN_C5, false);
     }
 }
 

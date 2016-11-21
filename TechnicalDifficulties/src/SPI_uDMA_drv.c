@@ -270,4 +270,3 @@ InitSPITransfer(uint8_t *pui8SPIData, uint16_t ui16DataSize,
     ROM_IntMasterEnable();
     ROM_uDMAChannelEnable(UDMA_CHANNEL_SSI1TX);
 }
-

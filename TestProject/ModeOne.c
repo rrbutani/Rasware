@@ -7,6 +7,7 @@
 
 #include <RASLib/inc/common.h>
 #include <RASLib/inc/time.h>
+#include <TechnicalDifficulties/inc/EVOM.h>
 
 void modeOneInitLights(void)
 {
@@ -24,6 +25,16 @@ void ModeOne(tBoolean *running, tBoolean rightSide)
 	{
 		Printf("Mode One; Right Side is a %d\n", rightSide);
 
-		Wait(0.1f);
+		// Wait(0.1f);
+		//  ArmsUp(leftArm, rightArm);
+		Intake(intake);//Start spinning intake
+		TurnLeft(0.6f);
+		Wait(0.3f);
+		DriveForward(leftMotor, rightMotor, 0.5f);
+		Wait(1.35f);
+		TurnRight(0.6f);
+		Wait(0.5f);
+		LineFollow();
+
 	}
 }

@@ -10,10 +10,10 @@
  */
 
 //IR Sensors - Analog ADC Read Pins
-static const tPin IR_FRONT_RIGHT = PIN_E1;
-static const tPin IR_FRONT_LEFT  = PIN_D1;
-static const tPin IR_BACK_RIGHT  = PIN_D2;
-static const tPin IR_BACK_LEFT   = PIN_D3;
+static const tPin IR_FRONT_RIGHT = PIN_D1;
+static const tPin IR_FRONT_LEFT  = PIN_D3;
+static const tPin IR_BACK_RIGHT  = PIN_E1;
+static const tPin IR_BACK_LEFT   = PIN_D2;
 
 //MPU-6050:
 static const tPin MPU_SDA = PIN_B3;
@@ -48,26 +48,22 @@ static const tPin LINE_1 = PIN_B5;
 static const tPin LINE_2 = PIN_E4;
 static const tPin LINE_3 = PIN_E5;
 static const tPin LINE_4 = PIN_B4;
-static const tPin LINE_5 = PIN_E1;
-static const tPin LINE_6 = PIN_E2;
-static const tPin LINE_7 = PIN_E3;
+static const tPin LINE_5 = PIN_A5;
+static const tPin LINE_6 = PIN_A6;
+static const tPin LINE_7 = PIN_A7;
 static const tPin LINE_8 = PIN_E0;
 
 //Buttons
-static const tPin LEFT_RIGHT_TOGGLE = PIN_A2; //Positive Logic
-static const tPin START_STOP_BUTTON = PIN_F0; //Negative Logic (i.e. pull-up)
-static const tPin MODE_CYCLE_BUTTON = PIN_F4; //Positive Logic because Launchpads are shit
+static const tPin LEFT_RIGHT_TOGGLE = PIN_A2;
+static const tPin START_STOP_BUTTON = PIN_F0;
+static const tPin MODE_CYCLE_BUTTON = PIN_F4;
 // static const tPin REVERSE_INTAKE_BUTTON = PIN_ //TODO
 
 //*****************************************************************************
-
-//**************************Configuration Variables****************************
 
 static const float ARM_UP_POSITION = 0.33f;
 
 #define LED_STRIP_LENGTH 12
 #define DEBOUNCE_TIME 50000 //in Microseconds
-
-//*****************************************************************************
 
 #endif // TD_PARAMS

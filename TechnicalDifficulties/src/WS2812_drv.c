@@ -90,12 +90,12 @@ void
 WSArrayInit(uint8_t *pi8SPIData, uint16_t ui16Len)
 {
     int i;
-    
+
     if(ui16Len == 0)
     {
         return;
     }
-    
+
     for(i=0;i<ui16Len;i++)
     {
         pi8SPIData[i] = WS2812_SPI_LOW;

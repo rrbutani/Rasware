@@ -11,10 +11,10 @@ void initServo(void) {
     if (initialized) {
         return;
     }
-    
+
     initialized = true;
 
-    servo = InitializeServo(PIN_C5);
+    servo = InitializeServo(PIN_C6);
 }
 
 void servoDemo(void) {
@@ -28,10 +28,10 @@ void servoDemo(void) {
 	   "  s-'down' 0.01\n"
            "  d-'down' 0.10\n"
 	   "  enter-quit\n");
-    
+
     // wait for the user to enter a character
     ch = Getc();
-        
+
     while (ch != newline) {
         switch (ch) {
             case 'w':
@@ -49,7 +49,7 @@ void servoDemo(void) {
             default:
                 position = position;
         }
-        
+
         // bounds checking (done in SetServo, but also useful to bound it here for the demo)
         if (position > 1.0f) {
              position = 1.0f;
@@ -59,10 +59,9 @@ void servoDemo(void) {
 
         SetServo(servo, position);
         Printf("set servo to %1.2f\r",position);
-        
+
         ch = Getc();
-    }         
-    
+    }
+
     Printf("\n");
 }
-
