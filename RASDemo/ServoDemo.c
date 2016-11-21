@@ -14,7 +14,7 @@ void initServo(void) {
     
     initialized = true;
 
-    servo = InitializeServo(PIN_B0);
+    servo = InitializeServo(PIN_C5);
 }
 
 void servoDemo(void) {

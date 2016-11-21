@@ -2,7 +2,20 @@
 
 #include <WS2812_drv.h>
 #include <SPI_uDMA_drv.h>
-#include <lightpatterns.h>
+#include <lights.h>
+
+#include <TechnicalDifficulties/inc/params.h>
+
+static uint8_t strip[LED_STRIP_LENGTH][3],\
+        ledStripOut[LED_STRIP_LENGTH][WS2812_SPI_BYTE_PER_CLR * 
+                                  WS2812_SPI_BIT_WIDTH];
+
+uint8_t ui8SPIDone;
+
+void InitializeLightStrip(void)
+{   
+    InitSPITransfer((uint8_t*)ledStripOut, sizeof(ledStripOut), &ui8SPIDone);
+}
 
 //*****************************************************************************
 //
@@ -99,7 +112,7 @@ void rainbowShift(uint8_t *ui8Green, uint8_t *ui8Red, uint8_t *ui8Blue)
 // @returns none, but values stored in ints are changed.
 //
 //*****************************************************************************
-void rainbowInit(uint8_t ints[][3], uint8_t ui8NumLED)
+void rainbowInitActual(uint8_t ints[][3], uint8_t ui8NumLED)
 {
     //
     // For the love of toast, why didn't I comment this while I was writing it?
@@ -203,5 +216,47 @@ void rainbowInit(uint8_t ints[][3], uint8_t ui8NumLED)
                 ints[i+j][2] = 0xFF - (0xFF/ledPerSect*j);
             }
         }
+    }
+}
+
+void OneColor(uint8_t r, uint8_t g, uint8_t b)
+{
+    for(int i = 0; i < LED_STRIP_LENGTH; i++)
+    {
+        strip[i][0] = g;
+        strip[i][1] = r;
+        strip[i][2] = b;
+    }
+
+    Show();
+}
+
+void Clear()
+{
+    OneColor(0x00, 0x00, 0x00);
+}
+
+void RainbowInit(void)
+{
+    rainbowInitActual(strip, LED_STRIP_LENGTH);
+}
+
+void RainbowStep(void)
+{
+    for(int i = 0; i < LED_STRIP_LENGTH; i++)
+    {
+        rainbowShift(&(strip[i][0]), &(strip[i][1]), &(strip[i][2]));
+    }
+
+    Show();
+}
+
+void Show(void)
+{
+    while(!ui8SPIDone);
+
+    for(int i = 0; i < LED_STRIP_LENGTH; i++)
+    {
+        WSGRBtoSPI(ledStripOut[i], strip[i][0], strip[i][1], strip[i][2]);
     }
 }

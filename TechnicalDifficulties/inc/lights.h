@@ -1,6 +1,5 @@
-#ifndef TD_LPs   /* Include guard */
-#define TD_LPs
-
+#ifndef TD_LIGHTS   /* Include guard */
+#define TD_LIGHTS
 
 typedef enum {  INHALE, HOLD_IN, EXHALE, HOLD_OUT } breathState_t;
 typedef enum { GREEN, RED, BLUE, WHITE } color_t;
@@ -63,6 +62,22 @@ rainbowShift(uint8_t *ui8Green, uint8_t *ui8Red, uint8_t *ui8Blue);
 //
 //*****************************************************************************
 extern void
-rainbowInit(uint8_t ints[][3], uint8_t ui8NumLED);
+rainbowInitActual(uint8_t ints[][3], uint8_t ui8NumLED);
 
-#endif // TD_LPs
+extern void 
+InitializeLightStrip(void);
+
+extern void 
+RainbowInit(void);
+
+extern void 
+RainbowStep(void);
+
+extern void
+OneColor(uint8_t r, uint8_t g, uint8_t b);
+
+extern void 
+Show(void);
+
+
+#endif // TD_LIGHTS

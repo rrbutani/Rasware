@@ -54,12 +54,20 @@ static const tPin LINE_7 = PIN_E3;
 static const tPin LINE_8 = PIN_E0;
 
 //Buttons
-static const tPin LEFT_RIGHT_TOGGLE = PIN_A2;
-static const tPin START_STOP_BUTTON = PIN_F0;
-static const tPin MODE_CYCLE_BUTTON = PIN_F4;
+static const tPin LEFT_RIGHT_TOGGLE = PIN_A2; //Positive Logic
+static const tPin START_STOP_BUTTON = PIN_F0; //Negative Logic (i.e. pull-up)
+static const tPin MODE_CYCLE_BUTTON = PIN_F4; //Positive Logic because Launchpads are shit
 // static const tPin REVERSE_INTAKE_BUTTON = PIN_ //TODO
 
 //*****************************************************************************
 
+//**************************Configuration Variables****************************
+
+static const float ARM_UP_POSITION = 0.33f;
+
+#define LED_STRIP_LENGTH 12
+#define DEBOUNCE_TIME 50000 //in Microseconds
+
+//*****************************************************************************
 
 #endif // TD_PARAMS

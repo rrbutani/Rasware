@@ -17,13 +17,13 @@ void blink(void) {
 
 int main(void) {
 
-    Motors[0] = InitializeServoMotor(PIN_B6, false);
-    Motors[1] = InitializeServoMotor(PIN_C4, false);
+    // Motors[0] = InitializeServoMotor(PIN_B6, false);
+    // Motors[1] = InitializeServoMotor(PIN_C4, false);
 
-    SetMotor(Motors[0], 0.75f);
-    SetMotor(Motors[1], -0.75f);
+    // SetMotor(Motors[0], 0.75f);
+    // SetMotor(Motors[1], -0.75f);
 
-    while(1) { }
+    // while(1) { }
 
     char ch;
 

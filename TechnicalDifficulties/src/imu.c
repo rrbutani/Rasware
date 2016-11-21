@@ -14,13 +14,12 @@
 
 #include <TechnicalDifficulties/inc/shared.h>
 
-
 #include <RASLib/inc/common.h>
 #include <RASLib/inc/gpio.h>
 #include <RASLib/inc/i2c.h>
 
 // Struct for an IMU object (connection with an IMU chip)
-typedef struct IMU
+struct IMU
 {
     // Pointer to an I2C Object
     tI2C *i2c;
@@ -36,12 +35,21 @@ typedef struct IMU
     float gyr_x, gyr_y, gyr_z;
     float temp;
 
-} tIMU;
+};
 
+// Buffer of imu structs (static memory allocation)
+static tIMU imuBuffer[IMU_MODULE_COUNT];
+
+static int usedIMUModules = 0;
 
 tIMU *InitializeIMUObject(tPin SDA, tPin SCL)
 {
-    tIMU *imu;
+    //Check if we're out of allocated modules; don't return though
+    if(usedIMUModules == IMU_MODULE_COUNT)
+        throw_error();
+
+    //Grab next allocated module and increment used modules
+    tIMU *imu = &imuBuffer[usedIMUModules++];
 
     imu->SDA = SDA;
     imu->SCL = SCL;

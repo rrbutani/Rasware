@@ -203,14 +203,14 @@ int main(void)
     //
     // Set the clocking to run from the PLL at 50MHz
     //
-    ROM_SysCtlClockSet(SYSCTL_SYSDIV_4 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN |
-                       SYSCTL_XTAL_16MHZ);
+    // ROM_SysCtlClockSet(SYSCTL_SYSDIV_4 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN |
+                       // SYSCTL_XTAL_16MHZ);
 
     //
     // This is in every example ever.  It involves how floating point values
     // get passed around... ignore it.
     //
-    ROM_FPULazyStackingEnable();
+    // ROM_FPULazyStackingEnable();
 
     //
     // Initialize the UART and say hello.

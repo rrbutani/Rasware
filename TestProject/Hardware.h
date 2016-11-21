@@ -1,11 +1,14 @@
-#ifndef TD_HW   /* Include guard */
-#define TD_HW
+#ifndef _TD_HW_   /* Include guard */
+#define _TD_HW_
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+#include <TechnicalDifficulties/inc/params.h>
+
 // Hardware Includes
+#include <RASLib/inc/common.h>
 #include <RASLib/inc/servo.h>      //Drive Servos
 #include <RASLib/inc/motor.h> 	   //Arm Servos
 #include <RASLib/inc/adc.h>        //IR Sensors
@@ -22,6 +25,7 @@ extern tADC *fLeftIR, *fRightIR, *bLeftIR, *bRightIR;
 extern tLineSensor *lineSensor;
 extern tIMU	*imu;
 extern tRGB *rgb;
+extern uint8_t ledStrip[LED_STRIP_LENGTH][3];
 
 // Public Init Methods
 void initArms(void);
@@ -32,10 +36,10 @@ void initLineSensor(void);
 void initButtons(void);
 void initLights(void);
 void initRGB(void);
-void initAll(void);
+void InitAll(void);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // TD_HW
+#endif // _TD_HW_
